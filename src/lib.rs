@@ -1,6 +1,8 @@
-// rust_i18n::i18n!("locales", fallback = "en-US");
+rust_i18n::i18n!("locales", fallback = "en-US");
 
 pub mod app;
+pub mod sync;
+pub mod watch;
 
 use std::env;
 
