@@ -45,7 +45,7 @@ impl App {
 impl eframe::App for App {
     fn update(&mut self, ctx: &egui::Context, frame: &mut eframe::Frame) {
         egui::CentralPanel::default().show(ctx, |ui| {
-            if ui.button(t!("sync-start")).clicked() {
+            if ui.button(t!("start-sync")).clicked() {
                 todo!()
             }
         });

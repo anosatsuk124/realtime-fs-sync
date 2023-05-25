@@ -18,13 +18,19 @@ pub fn init_logger() -> anyhow::Result<()> {
     Ok(())
 }
 
+pub const DEFAULT_LOCALE: &str = "en-US";
+
 pub fn init_locale() {
     let locale = if let Ok(locale) = env::var("LOCALE") {
         locale
     } else if let Some(locale) = sys_locale::get_locale() {
-        locale
+        available_locales()
+            .iter()
+            .find(|l| l.to_string() == locale)
+            .map(|l| l.to_string())
+            .unwrap_or(DEFAULT_LOCALE.to_string())
     } else {
-        "en-US".to_string()
+        DEFAULT_LOCALE.to_string()
     };
 
     rust_i18n::set_locale(&locale);
